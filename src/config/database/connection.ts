@@ -32,7 +32,7 @@ class Database {
 
     public async connect() {
         try {
-            console.log( 'Conexión correcta a la base de datos' )
+            // console.log( 'Conexión correcta a la base de datos' )
             return await this.pool.connect();
         } catch (error) {
             console.error('Error al conectar a la base de datos:', error);

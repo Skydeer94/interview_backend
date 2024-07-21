@@ -47,7 +47,14 @@ export default {
         const connection = await db.connect();
         try {
             return await connection.request()
-                .query(`SELECT * FROM CLIENTS;`);
+                .query(`
+                    SELECT 
+                        TC.id, TC.name_client, TC.document_type, TTD.name AS name_type, 
+                        TTD.description, TC.document_number, TC.address, 
+                        TC.phone, TC.email, TC.creationDate 
+                    FROM CLIENTS TC
+                    INNER JOIN TYPES_DOCUMENTS TTD ON TTD.id = TC.document_type;
+                `);
         } 
         catch (error: any) {
             throw error;
